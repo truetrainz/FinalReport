@@ -1,0 +1,31 @@
+﻿-- view 2
+CREATE VIEW Player_Annual_Defensive_Averages AS
+	SELECT
+		DISTINCT P.ID,
+		P.Name,
+		AVG(PSS.Sack) AS Average_Sacks,
+		AVG(PSS.Solo) AS Average_Tackles,
+		AVG(PSS.TOT) AS Average_Total_Tackles
+	FROM
+		PLAYER AS P,
+		PLAYER_SEASON_STATS AS PSS
+	WHERE
+		P.ID = PSS.Player_ID
+	GROUP BY
+		P.ID;
+
+-- view 1
+CREATE VIEW Coach_Average_Runs_and_Passes AS
+	SELECT
+		DISTINCT COACH.ID,
+		COACH.Name,
+		AVG(COACH_SEASON_STAT.Num_Runs) AS Average_Num_Runs,
+		AVG(COACH_SEASON_STAT.Num_Passes) AS Average_Num_Passes,
+		COUNT(COACH_SEASON_STAT.Year) AS Total_Years_Coached
+	FROM
+		COACH,
+		COACH_SEASON_STAT
+	WHERE
+		COACH.ID = COACH_SEASON_STAT.Coach_ID
+	GROUP BY
+		coach.ID;
