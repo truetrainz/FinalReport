@@ -1,0 +1,2 @@
+Once all of the database tables have been created you can use "populate.txt" to populate the tables.
+The populate.txt file contains the SQL commands to insert records into all of the tables. You must run them in order though.
